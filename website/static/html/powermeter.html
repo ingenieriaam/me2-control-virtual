@@ -1,0 +1,155 @@
+<script>
+    function avg_set_mode(that){
+        if (that.value == "OFF" || that.value == "AUTO") {
+            for (i=1;i<=256;i*=2){
+                document.getElementById("avg_times_"+i).setAttribute("disabled", "true");
+            }
+        } else {
+            for (i=1;i<=256;i*=2){
+                document.getElementById("avg_times_"+i).removeAttribute("disabled");
+            }
+        }
+    }
+
+    function calf_set_mode(that){
+        if(that.value=="AUTO"){
+            document.getElementById("calf_val").setAttribute("disabled", "true");
+        }else{
+            document.getElementById("calf_val").removeAttribute("disabled");
+        }
+    }
+</script>
+</br>
+<form action="/config_powermeter" method="post" id="config_powermeter_form">
+    <table class="tg" style="block-size: 100%">
+        <!-- ######################################################################### -->
+
+        <tr>
+            <!-- comienza la fila 6 -->
+            <td class="tg-73oq" style="width: 25%;">
+                <!-- columna1 -->
+                <span style="font-weight: bold;">
+                    <div style="size :  3px;">Display Unit</div>
+                </span>
+            </td>
+            <td class="tg-73oq" style="width: 25%;">CalF Mode</td>
+            <td class="tg-73oq" style="width: 25%;">CalF Frequency</td>
+            <td class="tg-73oq" style="width: 25%;">CalF Value</td>
+        </tr><!-- finaliza fila 6 -->
+        
+        <!-- ######################################################################### -->
+
+        <tr>
+            <td class="tg-73oq" style="width: 25%;">
+                <div class="toggle">
+                    <input type="radio" value="DBM" id="ch_unit_dbm" name="ch_unit" checked="checked"/>
+                    <label for="ch_unit_dbm">dBm</label>
+                    <input type="radio" value="W" id="ch_unit_w" name="ch_unit" />
+                    <label for="ch_unit_w">Watt</label>
+                    <input type="radio" value="V" id="ch_unit_v" name="ch_unit" />
+                    <label for="ch_unit_v">Volt</label>
+                </div>
+            </td>
+            <td class="tg-73oq" style="width: 25%;">
+                <div class="toggle">
+                    <input type="radio" value="AUTO" id="calf_auto" name="calf_mode" checked="checked" onclick="calf_set_mode(this);"/>
+                    <label for="calf_auto">MEMORY</label>
+                    <input type="radio" value="MANUAL" id="calf_manual" name="calf_mode" onclick="calf_set_mode(this);"/>
+                    <label for="calf_manual">MANUAL</label>
+                </div>
+            </td>
+            <td class="tg-73oq" style="width: 25%;">
+                <input type="text" name="calf_freq">
+            </td>
+            <td class="tg-73oq" style="width: 25%;">
+                <input type="text" id="calf_val" name="calf_val" disabled="true">
+            </td>
+        </tr><!-- finaliza fila 6 -->
+        
+        <!-- ######################################################################### -->
+
+        <tr>
+            <!-- comienza la fila 6 -->
+            <td class="tg-73oq" style="width: 25%;">
+                <!-- columna1 -->
+                <span style="font-weight: bold;">
+                    <div style="size :  3px;">Average</div>
+                </span>
+            </td>
+            <td class="tg-73oq" style="width: 25%;">
+                <!-- columna2 -->
+                <!-- <span style="font-weight: bold;">
+                        <div style="size :  3px;">Unit</div>
+                    </span> -->
+            </td>
+            <td class="tg-73oq" style="width: 25%;" colspan="2"></td>
+        </tr><!-- finaliza fila 6 -->
+
+
+
+        <!-- ######################################################################### -->
+        <tr>
+            <!-- comienza la fila 7-->
+            <td class="tg-73oq" style="width: 25%;" colspan="2">
+                <!-- columna1 -->
+                <div class="toggle">
+                    <input type="radio" value="OFF" id="avg_times_off" checked="checked"  name="avg_mode" onclick="avg_set_mode(this);"/>
+                    <label for="avg_times_off">OFF</label>
+                    <input type="radio" value="AUTO" id="avg_mode_auto" name="avg_mode" onclick="avg_set_mode(this);"/>
+                    <label for="avg_mode_auto">AUTO</label>
+                    <input type="radio" value="MOVE" id="avg_times_move" name="avg_mode" onclick="avg_set_mode(this);"/>
+                    <label for="avg_times_move">MOVE</label>
+                    <input type="radio" value="REPEAT" id="avg_times_repeat" name="avg_mode" onclick="avg_set_mode(this);"/>
+                    <label for="avg_times_repeat">REPEAT</label>
+                </div>
+            </td>
+            <td class="tg-73oq" style="width: 25%;" colspan="2">
+                <div class="toggle">
+                    <input type="radio" value="1" id="avg_times_1" name="avg_times" checked="checked" disabled="true"/>
+                    <label for="avg_times_1">1</label>
+                    <input type="radio" value="2" id="avg_times_2" name="avg_times" disabled="true"/>
+                    <label for="avg_times_2">2</label>
+                    <input type="radio" value="4" id="avg_times_4" name="avg_times" disabled="true"/>
+                    <label for="avg_times_4">4</label>
+                    <input type="radio" value="8" id="avg_times_8" name="avg_times" disabled="true"/>
+                    <label for="avg_times_8">8</label>
+                    <input type="radio" value="16" id="avg_times_16" name="avg_times" disabled="true"/>
+                    <label for="avg_times_16">16</label>
+                    <input type="radio" value="32" id="avg_times_32" name="avg_times" disabled="true"/>
+                    <label for="avg_times_32">32</label>
+                    <input type="radio" value="64" id="avg_times_64" name="avg_times" disabled="true"/>
+                    <label for="avg_times_64">64</label>
+                    <input type="radio" value="128" id="avg_times_128" name="avg_times" disabled="true"/>
+                    <label for="avg_times_128">128</label>
+                    <input type="radio" value="256" id="avg_times_256" name="avg_times" disabled="true"/>
+                    <label for="avg_times_256">256</label>
+                    <input type="radio" value="512" id="avg_times_512" name="avg_times" disabled="true"/>
+                    <label for="avg_times_512">512</label>
+                </div>
+            </td>
+            <td class="tg-73oq" style="width: 25%;" colspan="2"></td>
+        </tr><!-- finaliza fila 7 -->
+
+        <!-- ######################################################################### -->
+
+        <tr>
+            <td class="tg-73oq" style="width: 25%;" colspan="4">
+                <div style="padding-right: 5%; size : 3px; display: inline;">Send an arbitrary VISA command:</div>
+                <input type="text" name="visa_command" style="width: 40%;">
+            </td>
+        </tr>
+
+        <!-- ######################################################################### -->
+
+        <tr>
+            <!-- comienza la fila 10-->
+            <td class="tg-73oq" style="width: 25%;">
+                <button type="submit" value="Submit" id="powermeter_submit" class="button"
+                    style="font-size : 14px">SET CONFIG</button>
+            </td>
+            <td class="tg-73oq" style="width: 25%;"></td>
+            <td class="tg-73oq" style="width: 25%;"></td>
+            <td class="tg-73oq" style="width: 25%;"></td>
+        </tr>
+    </table>
+</form>

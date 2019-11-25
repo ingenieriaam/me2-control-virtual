@@ -1,0 +1,455 @@
+<script>
+    function LF_OnOff(that) {
+        if (that.value == "OFF")
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col0").style.display = "none";
+                var inputs = document.getElementById("row" + i + "_col0").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].setAttribute("disabled","true")
+            }
+        else
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col0").style.display = "block";
+                var inputs = document.getElementById("row" + i + "_col0").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].removeAttribute("disabled");
+            }
+    }
+    function RF_OnOff(that) {
+        if (that.value == "OFF")
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col1").style.display = "none";
+                var inputs = document.getElementById("row" + i + "_col1").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].setAttribute("disabled","true")
+            }
+        else
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col1").style.display = "block";
+                var inputs = document.getElementById("row" + i + "_col1").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].removeAttribute("disabled");
+            }
+    }
+    function AM_OnOff(that) {
+        if (that.value == "OFF")
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col2").style.display = "none";
+                var inputs = document.getElementById("row" + i + "_col2").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].setAttribute("disabled","true")
+            }
+        else
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col2").style.display = "block";
+                var inputs = document.getElementById("row" + i + "_col2").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].removeAttribute("disabled");
+            }
+    }
+    function FMPM_OnOff(that) {
+        if (that.value == "OFF")
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col3").style.display = "none";
+                var inputs = document.getElementById("row" + i + "_col3").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].setAttribute("disabled","true")
+            }
+        else
+            for (i = 2; i <= 9; i++){
+                document.getElementById("row" + i + "_col3").style.display = "block";
+                var inputs = document.getElementById("row" + i + "_col3").getElementsByTagName('input');
+                for(var j=0;j<inputs.length;j++)
+                    inputs[j].removeAttribute("disabled");
+            }
+    }
+
+    function generatorSubmit(event){
+        document.getElementById("config_generator_form").submit();
+    }
+</script>
+</br>
+<form action="/config_generator" method="post" id="config_generator_form">
+    <table class="tg" style="block-size: 100%">
+        <tbody>
+            <!-- ######################################################################### -->
+            <tr style="padding-bottom: 2em">
+                <td style="width: 25%;" class="tg-73oq">
+                    <div>
+                        <div style="box-align: right">
+                            <label>Send an arbitrary VISA command:</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq" colspan="2">
+                    <div>
+                        <input type="text" name="visa_command" style="width: 100%;">
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div></div>
+                </td>
+            </tr>
+            <!-- ######################################################################### -->
+            <tr>
+                <!-- comienza la fila 1 -->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row0_col0">
+                        <!-- columna1 -->
+                        <span style="font-weight: bold;">
+                            <div style="size : 3px;">Low Frequency Generator</div>
+                        </span>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row0_col1">
+                        <!-- columna2 -->
+                        <span style="font-weight: bold;">
+                            <div style="size : 3px;">RF Generator</div>
+                        </span>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row0_col2">
+                        <!-- columna3 -->
+                        <span style="font-weight: bold;">
+                            <div style="size : 3px;">AM Modulator</div>
+                        </span>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row0_col3">
+                        <!-- columna4 -->
+                        <span style="font-weight: bold;">
+                            <div style="size : 3px;">FM/PM Modulation</div>
+                        </span>
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 1 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 3 -->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row1_col0">
+                        <!-- columna1 -->
+                        <div class="toggle">
+                            <input type="radio" value="OFF" id="lf_off" checked="checked" name="lf_state"
+                                onclick="LF_OnOff(this);" />
+                            <label for="lf_off">OFF</label>
+                            <input type="radio" value="ON" id="lf_on" name="lf_state" onclick="LF_OnOff(this);" />
+                            <label for="lf_on">ON</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row1_col1">
+                        <!-- columna2 -->
+                        <div class="toggle">
+                            <input type="radio" value="OFF" id="rf_off" checked="checked" name="rf_state"
+                                onclick="RF_OnOff(this);" />
+                            <label for="rf_off">OFF</label>
+                            <input type="radio" value="ON" id="rf_on" name="rf_state" onclick="RF_OnOff(this);" />
+                            <label for="rf_on">ON</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row1_col2">
+                        <!-- columna3 -->
+                        <div class="toggle">
+                            <input type="radio" value="OFF" id="am_off" checked="checked" name="am_state"
+                                onclick="AM_OnOff(this);" />
+                            <label for="am_off">OFF</label>
+                            <input type="radio" value="ON" id="am_on" name="am_state" onclick="AM_OnOff(this);" />
+                            <label for="am_on">ON</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div id="row1_col3">
+                        <!-- columna4 -->
+                        <div class="toggle">
+                            <input type="radio" value="OFF" id="fmpm_enable_off" checked="checked" name="fmpm_state"
+                                onclick="FMPM_OnOff(this);" />
+                            <label for="fmpm_enable_off">OFF</label>
+                            <input type="radio" value="ON" id="fmpm_enable_on" name="fmpm_state"
+                                onclick="FMPM_OnOff(this);" />
+                            <label for="fmpm_enable_on">ON</label>
+                        </div>
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 3 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 4 -->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row2_col0">
+                        <!-- columna1 -->
+                        <div style="size : 2px;" id>Frequency</div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row2_col1">
+                        <!-- columna2 -->
+
+                        <div style="size : 2px;">Frequency</div>
+
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row2_col2">
+                        <!-- columna3 -->
+
+                        <div style="size : 2px;">Source</div>
+
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row2_col3">Modulation</div>
+                </td>
+            </tr><!-- finaliza fila 4 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 5 -->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row3_col0">
+                        <!-- columna1 -->
+                        <input disabled="true" name="lf_freq" type="text" value="" />
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row3_col1">
+                        <!-- columna2 -->
+                        <input disabled="true" name="rf_freq" type="text" value="" />
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row3_col2">
+                        <!-- columna3 -->
+                        <div class="toggle">
+                            <input disabled="true" type="radio" value="INT" id="am_int" checked="checked" name="am_source" />
+                            <label for="am_int">INT</label>
+                            <input disabled="true" type="radio" value="EXT" id="am_ext" name="am_source" />
+                            <label for="am_ext">EXT</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row3_col3">
+                        <!-- columna4 -->
+                        <div class="toggle">
+                            <input disabled="true" type="radio" value="FM" id="fm_sel" checked="checked" name="fmpm_mod_type" />
+                            <label for="fm_sel">FM</label>
+                            <input disabled="true" type="radio" value="PM" id="pm_sel" name="fmpm_mod_type" />
+                            <label for="pm_sel">PM</label>
+                        </div>
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 5 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 6 -->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row4_col0">
+                        <!-- columna1 -->
+                        <div style="size : 2px;">Level</div>
+
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row4_col1">
+                        <!-- columna2 -->
+                        <div style="size : 2px;">Level</div>
+
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row4_col2">
+                        <!-- columna3 -->
+                        <div style="size : 2px;">Signal Frequency (Modulating)</div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row4_col3">
+                        <div style="size : 2px;">Signal Frequency (Modulating)</div>
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 6 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 7-->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row5_col0">
+                        <!-- columna1 -->
+                        <input disabled="true" name="lf_level" type="text" value="" />
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row5_col1">
+                        <!-- columna2 -->
+                        <input disabled="true" name="rf_level" type="text" value="" />
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row5_col2">
+                        <!-- columna3 -->
+                        <input disabled="true" name="am_mod_freq" type="text" value="" />
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row5_col3">
+                        <input disabled="true" name="fmpm_mod_freq" type="text" value="" />
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 7 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 8-->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row6_col0"></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row6_col1"></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row6_col2">
+                        <!-- columna3 -->
+                        <div style="size : 2px;">Modulation Index</div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row6_col3">
+                        <div style="size : 2px;">Modulation Index</div>
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 8 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 9-->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row7_col0"></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row7_col1"></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row7_col2">
+                        <!-- columna3 -->
+                        <input disabled="true" name="am_mod_index" type="text" value="" />
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row7_col3">
+                        <!-- columna4 -->
+                        <input disabled="true" name="fmpm_mod_index" type="text" value="" />
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 9 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 10-->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row8_col0">
+                        <!-- columna1 -->
+                        <div style="size : 2px;">Waveform</div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row8_col1"></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row8_col2">
+                        <!-- columna3 -->
+                        <div style="size : 2px;">Waveform</div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row8_col3">
+                        <!-- columna4 -->
+                        <div style="size : 2px;">Waveform</div>
+                    </div>
+                </td>
+            </tr><!-- finaliza fila 10 -->
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 11-->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row9_col0">
+                        <!-- columna1 -->
+                        <div class="toggle">
+                            <input disabled="true" type="radio" value="SINE" id="lf_sin" checked="checked" name="lf_waveform">
+                            <label for="lf_sin">SINE</label>
+                            <input disabled="true" type="radio" value="SQU" id="lf_square" name="lf_waveform"/>
+                            <label for="lf_square">SQUA</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row9_col1"></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row9_col2">
+                        <!-- columna3 -->
+                        <div class="toggle">
+                            <input disabled="true" type="radio" value="SINE" id="am_sin" checked="checked" name="am_waveform" />
+                            <label for="am_sin">SINE</label>
+                            <input disabled="true" type="radio" value="SQUA" id="am_square" name="am_waveform" />
+                            <label for="am_square">SQUA</label>
+                        </div>
+                    </div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div style="display: none" id="row9_col3">
+                        <!-- columna4 -->
+                        <div class="toggle">
+                            <input disabled="true" type="radio" value="SINE" id="fm_sin" checked="checked" name="fmpm_waveform" />
+                            <label for="fm_sin">SINE</label>
+                            <input disabled="true" type="radio" value="SQUA" id="fm_square" name="fmpm_waveform" />
+                            <label for="fm_square">SQUA</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- ######################################################################### -->
+
+            <tr>
+                <!-- comienza la fila 10-->
+                <td style="width: 50%;" class="tg-73oq" colspan="2">
+                    <div>
+                        <button type="submit" value="Submit" id="generator_submit" class="button"
+                            style="font-size : 14px; width: 80%" onclick="generatorSubmit(event);">SET CONFIG</button>
+                    </div>
+                </td>
+                <!-- <td style="width: 25%;" class="tg-73oq">
+                    <div></div>
+                </td> -->
+                <td style="width: 25%;" class="tg-73oq">
+                    <div></div>
+                </td>
+                <td style="width: 25%;" class="tg-73oq">
+                    <div></div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>

@@ -1,0 +1,211 @@
+<script>
+    function freqs_or_span(that) {
+        if (that.value == "freqs") {
+            document.getElementById("label_freqini").style.display = "block";
+            document.getElementById("label_freqfin").style.display = "block";
+            document.getElementById("label_freqspan").style.display = "none";
+            document.getElementById("label_freqcent").style.display = "none";
+            document.getElementById("input_freqini").style.display = "block";
+            document.getElementById("input_freqfin").style.display = "block";
+            document.getElementById("input_freqspan").style.display = "none";
+            document.getElementById("input_freqcent").style.display = "none";
+            document.getElementById("input_freqini").removeAttribute("disabled");
+            document.getElementById("input_freqfin").removeAttribute("disabled");
+            document.getElementById("input_freqspan").setAttribute("disabled", "true");
+            document.getElementById("input_freqcent").setAttribute("disabled", "true");
+        } else if (that.value == "span") {
+            document.getElementById("label_freqini").style.display = "none";
+            document.getElementById("label_freqfin").style.display = "none";
+            document.getElementById("label_freqspan").style.display = "block";
+            document.getElementById("label_freqcent").style.display = "block";
+            document.getElementById("input_freqini").style.display = "none";
+            document.getElementById("input_freqfin").style.display = "none";
+            document.getElementById("input_freqspan").style.display = "block";
+            document.getElementById("input_freqcent").style.display = "block";
+            document.getElementById("input_freqcent").removeAttribute("disabled");
+            document.getElementById("input_freqspan").removeAttribute("disabled");
+            document.getElementById("input_freqini").setAttribute("disabled", "true");
+            document.getElementById("input_freqfin").setAttribute("disabled", "true");
+        } else {
+            document.getElementById("input_freqini").setAttribute("disabled", "true");
+            document.getElementById("input_freqfin").setAttribute("disabled", "true");
+            document.getElementById("input_freqspan").setAttribute("disabled", "true");
+            document.getElementById("input_freqcent").setAttribute("disabled", "true");
+        }
+    }
+
+    function slider_attenuator(that) {
+        document.getElementById("attenuator_val").innerHTML = that.value;
+    }
+
+    function slider_averaging(that) {
+        document.getElementById("avg_val").innerHTML = that.value;
+    }
+
+    function avg_mode(that) {
+        if (that.value == "WRITe"){
+            document.getElementById("averaging_slider").value = "1";
+            document.getElementById("avg_val").innerHTML = "1";
+            document.getElementById("averaging_slider").setAttribute("disabled", "true");
+        }
+        else {
+            document.getElementById("averaging_slider").removeAttribute("disabled");
+        }
+    }
+
+</script>
+</br>
+<form action="/config_analyzer" method="post" id="config_analyzer_form">
+    <table class="tg" style="block-size: 100%">
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">X-Scale</td>
+            <td  style="width: 25%;" class="tg-73oq">Y-Scale</td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">
+                <div class="toggle" style="display:inline; vertical-align: top;" id="x_toggle">
+                    <input type="radio" value="LIN" id="x_lin" checked="checked" name="x_scale" />
+                    <label for="x_lin">LIN</label>
+                    <input type="radio" value="LOG" id="x_log" name="x_scale" />
+                    <label for="x_log">LOG</label>
+                </div>
+            </td>
+            <td  style="width: 25%;" class="tg-73oq">
+                <div class="toggle" style="display:inline; vertical-align: top;">
+                    <input type="radio" value="LIN" id="y_lin" name="y_scale" />
+                    <label for="y_lin">LIN</label>
+                    <input type="radio" value="LOG" id="y_log" checked="checked" name="y_scale" />
+                    <label for="y_log">LOG</label>
+                </div>
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">
+                <label id="label_freqini">Start Frequency [Hz]</label>
+                <label id="label_freqspan" style="display: none">Span</label></td>
+            <td  style="width: 25%;" class="tg-73oq">
+                <label id="label_freqfin">Stop Frequency [Hz]</label>
+                <label id="label_freqcent" style="display: none">Central Frequency</label></td>
+            <td  style="width: 25%;" class="tg-73oq">Range Mode</td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">
+                <input name="start_freq" type="text" value="" id="input_freqini" />
+                <input name="span" type="text" value="" id="input_freqspan" style="display: none" />
+            </td>
+            <td  style="width: 25%;" class="tg-73oq">
+                <input name="stop_freq" type="text" value="" id="input_freqfin" />
+                <input name="center_freq" type="text" value="" id="input_freqcent" style="display: none" />
+            </td>
+            <td  style="width: 25%;" class="tg-73oq" colspan="2">
+                <div class="toggle" style="display:inline; vertical-align: top;">
+                    <input type="radio" value="freqs" id="fvss_fr" checked="checked" name="freq_or_span"
+                        onclick="freqs_or_span(this);" />
+                    <label for="fvss_fr">FREQ</label>
+                    <input type="radio" value="span" id="fvss_sp" name="freq_or_span"
+                        onclick="freqs_or_span(this);" />
+                    <label for="fvss_sp">SPAN</label>
+                    <input type="radio" value="full" id="fvss_full" name="freq_or_span"
+                        onclick="freqs_or_span(this);" />
+                    <label for="fvss_full">FULL</label>
+                </div>
+            </td>
+            <!--<td  style="width: 25%;" class="tg-73oq"></td>-->
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">Reference Level</td>
+            <td  style="width: 25%;" class="tg-73oq">Scale/Division</td>
+            <td  style="width: 25%;" class="tg-73oq">Input Attenuator (<div style="text-align: center; display:inline;"
+                    id="attenuator_val">10</div>)</td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq"><input name="ref_level" type="text" value="" /></td>
+            <td  style="width: 25%;" class="tg-73oq"><input name="scale_div" type="text" value="" /></td>
+            <td  style="width: 25%;" class="tg-73oq">
+                <input type="range" name="input_att" min="0" max="30" step="5" value="10" class="slider"
+                    id="attenuator_slider" oninput="slider_attenuator(this);">
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">Resolution BW [Hz]</td>
+            <td  style="width: 25%;" class="tg-73oq">Demodulation Time [s]</td>
+            <td  style="width: 25%;" class="tg-73oq">Demodulation Type</td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq"><input name="res_bw" type="text" value="" /></td>
+            <td  style="width: 25%;" class="tg-73oq"><input name="demod_time" type="text" value="" /></td>
+            <td  style="width: 25%;" class="tg-73oq">
+                <div class="toggle" style="display:inline; vertical-align: top;">
+                    <input type="radio" name="demod_type" value="OFF" id="demod_off" checked="checked" />
+                    <label for="demod_off">OFF</label>
+                    <input type="radio" name="demod_type" value="AM" id="demod_am" />
+                    <label for="demod_am">AM</label>
+                    <input type="radio" name="demod_type" value="FM" id="demod_fm" />
+                    <label for="demod_fm">FM</label>
+                </div>
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq" colspan="2">
+                Averaging [Times] (<div style="text-align: center; display:inline;" id="avg_val">1</div>)
+            </td>
+            <td  style="width: 25%;" class="tg-73oq">
+                Filter Mode
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <!--<td  style="width: 25%;" class="tg-73oq"><input name="video_filt" type="text" value="" /></td>-->
+            <td  style="width: 25%;" class="tg-73oq" colspan="2">
+            <!--</td>
+            <td  style="width: 25%;" class="tg-73oq">-->
+                <input type="range" name="avg_times" min="1" max="1000" step="1" value="1" class="slider"
+                    id="averaging_slider" oninput="slider_averaging(this);" style="width: 100%" disabled="true">
+            </td>
+            <td style="width: 25%;" class="tg-73oq" colspan="2">
+                <div class="toggle" style="display:inline; padding-right: 5%; vertical-align: top;">
+                    <input type="radio" value="WRITe" id="avg_off" checked="checked" name="avg_state"
+                        onclick="avg_mode(this);" />
+                    <label for="avg_off">OFF</label>
+                    <input type="radio" value="VIDeoavg" id="avg_video" name="avg_state" onclick="avg_mode(this);" />
+                    <label for="avg_video">VIDEO</label>
+                    <input type="radio" value="POWeravg" id="avg_power" name="avg_state" onclick="avg_mode(this);" />
+                    <label for="avg_power">POWER</label>
+                </div>
+            </td>
+            <!--<td  style="width: 25%;" class="tg-73oq"></td>-->
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq" colspan="2">
+                <div style="display: inline;">Send an arbitrary VISA command:</div>
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq" colspan="2">
+                <input type="text" name="visa_command" style="width: 100%;">
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+        <tr>
+            <td  style="width: 25%;" class="tg-73oq">
+                <button type="submit" value="Submit" id="analyzer_submit" class="button" style="font-size: 14px">SET
+                    CONFIG</button>
+            </td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+            <td  style="width: 25%;" class="tg-73oq"></td>
+        </tr>
+    </table>
+</form>
