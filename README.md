@@ -5,6 +5,9 @@ _______________________________________
 
 En este trabajo de creo una herramienta de control remoto de instrumentos de medición hasta ***1.5GHz***.
 El desarrollo ha permitido tanto seteos como consultas a los equipos detallados a continuación
+
+### Conozca la idea y realización en:
+[https://ingenieriaam.github.io/me2-control-virtual/](https://ingenieriaam.github.io/me2-control-virtual/)
 _______________________________________
 ## Equipos:
 - [Analizador de espectro Rigol DSA815](https://www.rigolna.com/products/spectrum-analyzers/dsa800/)
