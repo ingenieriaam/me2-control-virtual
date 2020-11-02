@@ -2,12 +2,12 @@ from time import sleep
 from requests import post, get
 
 SERVER_PORT = str(8889)
-SERVER_UPDATE_URL = "/update/"
-SERVER_GET_CONFIG_URL = "/get_config/"
+SERVER_UPDATE_URL = "/update_analyzer/"
+SERVER_GET_CONFIG_URL = "/get_analyzer_config/"
 
 i = 0
 while True:
-    with open('data'+str(i)+'.log','r') as fr:
+    with open('datalogs/data'+str(i)+'.log','r') as fr:
         file_data = fr.read().split(",")
         start_freq  = float(file_data[1])
         stop_freq   = float(file_data[2])

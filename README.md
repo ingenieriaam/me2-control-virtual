@@ -14,7 +14,17 @@ _______________________________________
 _______________________________________
 ## Servidor:
 Se utilizo para estos fines el kit [BeagleBone Black](https://beagleboard.org/black) con servicio sobre linux.
-[![bbb](https://beagleboard.org/static/ti/product_detail_black_sm.jpg)](https://beagleboard.org/black)
+[![bbb](https://beagleboard.org/static/ti/product_detail_black_sm.jpg)](https://beagleboard.org/black).
+
+El servidor es apto para correr en cualquier plataforma que soporte python.
+
+_______________________________________
+## Entorno grafico
+- Vista sin permisos de control (requiere pass) ![inicial_sin](./info/alumno_sin_permisos.png)
+- Vista con permisos de control ![inicial_con](./info/con_permisos_init.png)
+- Controles del analizador de espectro ![AE](./info/analizer_set.png)
+- Controles del generador ![GEN](./info/generator_set.png)
+- Controles del medidor de potencia ![PM](./info/PM_set.png)
 
 _______________________________________
 ## Software:
@@ -26,7 +36,7 @@ Se ha utilizado Python 3 para el desarrollo grafico, HTML para lograr captar dat
 [![js](https://www.espai.es/blog/wp-content/uploads/2015/11/acb_art01_00.png)](https://www.javascript.com/)
 
 
-Haciendo uso de los siguientes paquetes, se desarrolla integramente el resultado final:
+Haciendo uso de los siguientes paquetes, se desarrolla integramente el resultado final (ver: website/install.txt):
 
 - Numpy
 - Scipy

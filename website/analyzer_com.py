@@ -7,8 +7,8 @@ from time import sleep
 from signal import signal, SIGINT
 from requests import post, get, Request
 from threading import Thread, Lock, Condition, Event
-from pyvisa_utils import connectToResource, writeCommandToResource, queryCommandToResource
-#from simulador_pyvisa_utils import connectToResource, writeCommandToResource, queryCommandToResource
+#from pyvisa_utils import connectToResource, writeCommandToResource, queryCommandToResource
+from simulador_pyvisa_utils import connectToResource, writeCommandToResource, queryCommandToResource
 
 # --------------------------------------------------------------------------------------------------------------
 #                                       ANALYZER'S GLOBALS

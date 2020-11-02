@@ -387,14 +387,15 @@ def ajax_getplot(x,y,y_bottom,ref_value): #fi,ff,y_bottom,ref_value,x,y):
     with open("static/js/checkbox_callback.js","r") as f:
         checkbox_code=f.read()
 
-    checkbox_preset.callback = CustomJS (args = dict (marker_abs = marker_abs, markers = markers,
+    cjs = CustomJS (args = dict (marker_abs = marker_abs, markers = markers,
                                 checkbox_preset = checkbox_preset, checkbox_mark = checkbox_mark,
                                 source_table = source_table, source = source, source_markers = source_markers,
                                 source_table_share = source_table_share,
                                 sliders = sliders
                                 ),code = checkbox_code)
+    checkbox_preset.js_on_click (cjs)
 
-    checkbox_mark.callback = checkbox_preset.callback
+    checkbox_mark.js_on_click (cjs)
 
     ##---------------------------------------------------------------------------##
 

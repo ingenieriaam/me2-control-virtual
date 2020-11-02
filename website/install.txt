@@ -1,0 +1,28 @@
+# Install anaconda/miniconda
+
+conda create --name py2 python=2.7.18
+conda activate py2
+conda install -c conda-forge -y pyvisa=1.10.1
+conda install -c conda-forge -y pyvisa-py=0.5.1
+conda install -c conda-forge -y pyserial=3.4
+conda install -c conda-forge -y pyusb=1.1.0
+conda install -c conda-forge -y matplotlib=2.2.4
+conda install -c conda-forge -y bokeh=1.3.4
+conda install -c conda-forge -y numpy=1.16.5
+conda install -c conda-forge -y scipy=1.2.1
+conda install -c conda-forge -y tabulate=0.8.7
+conda install -c anaconda -y flask=1.1.2
+conda install -c anaconda -y requests=2.24.0
+
+# assert python version. On a terminal put:
+python --version
+# must output "Python 2.7.18 :: Anaconda, Inc."
+
+# run in a terminal:
+python web.py
+
+# open browser on:
+http://0.0.0.0:8889/
+
+# run in another terminal:
+python simulador.py
