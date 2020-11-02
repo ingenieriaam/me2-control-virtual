@@ -1,6 +1,10 @@
 # Control virtual de instrumental de medición en radio frecuencia - Proyecto anual de [Medidas Electrónicas 2](http://www.electron.frba.utn.edu.ar/materias.php?cod=95-0458#marca)
 [![UTN](https://actividades.frba.utn.edu.ar/imagenes/logo-con-margenes.jpg)](https://www.frba.utn.edu.ar/)
 
+## Autores:
+- Nicolas Mariano Koremblum 
+- Pablo Rodrigo D'Angelo 
+- Agustin Matias Ortiz 
 _______________________________________
 
 En este trabajo de creo una herramienta de control remoto de instrumentos de medición hasta ***1.5GHz***.
